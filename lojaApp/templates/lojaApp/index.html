@@ -1,0 +1,72 @@
+{% extends 'lojaApp/base.html' %}
+{% load static %}
+{% block title %}Início{% endblock %}
+{% block content %}
+
+<section class="hero-panel">
+    <div class="hero-content">
+        <h2 class="hero-title">Bem-vindo à IceFrost</h2>
+        <p class="hero-subtitle">Somos a sorveteria que transforma cada sabor em uma experiência doce, leve e acolhedora.</p>
+        <p class="hero-tagline">🍦 Fique por dentro das novidades e promos! 🍦</p>
+        <div class="hero-buttons">
+            <a href="{% url 'cardapio' %}" class="button button-primary">🛒 Ver cardápio</a>
+            <a href="{% url 'galeria' %}" class="button button-secondary">📸 Conhecer a galeria</a>
+        </div>
+    </div>
+    <div class="hero-image">
+        <img src="{% static 'img/01.jpg' %}" alt="Sorveteria IceFrost">
+    </div>
+</section>
+
+<section class="about-section">
+    <h2>Sobre a IceFrost</h2>
+    <div class="about-grid">
+        <div class="about-card">
+            <div class="about-icon">❄️</div>
+            <h3>Qualidade Premium</h3>
+            <p>Sorvetes feitos com ingredientes selecionados e receitas exclusivas para garantir o melhor sabor.</p>
+        </div>
+        <div class="about-card">
+            <div class="about-icon">👨‍🍳</div>
+            <h3>Feito Artesanalmente</h3>
+            <p>Cada lote é preparado com cuidado e dedicação pelos nossos mestres sorveteristas.</p>
+        </div>
+        <div class="about-card">
+            <div class="about-icon">🌿</div>
+            <h3>Sabores Naturais</h3>
+            <p>Utilizamos frutas frescas, chocolates nobre e ingredientes 100% naturais em nossas receitas.</p>
+        </div>
+        <div class="about-card">
+            <div class="about-icon">⭐</div>
+            <h3>Opções Para Todos</h3>
+            <p>Vegano, sem lactose, sem açúcar - temos opções deliciosas para todos os gostos e necessidades.</p>
+        </div>
+    </div>
+</section>
+
+<section class="info-section">
+    <div class="info-box">
+        <h3>📍 Localização</h3>
+        <p>Rua senai, 1000 - Débora Cristina<br>São José do Rio Preto, SP</p>
+    </div>
+    <div class="info-box">
+        <h3>⏰ Horário de Funcionamento</h3>
+        <p>Segunda a Domingo<br>12h00 - 22h00</p>
+    </div>
+    <div class="info-box">
+        <h3>📞 Contato</h3>
+        <p>(11) 9999-8888<br>contato@icefrost.com</p>
+    </div>
+    <div class="info-box">
+        <h3>🎉 Especial da Semana</h3>
+        <p>20% OFF em qualquer compra<br>Válido até Domingo!</p>
+    </div>
+</section>
+
+<section class="cta-section">
+    <h2>Pronto para uma experiência gelada?</h2>
+    <p>Visite nosso cardápio e escolha o seu sabor favorito!</p>
+    <a href="{% url 'cardapio' %}" class="button button-large">Explorar Cardápio Completo</a>
+</section>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'lojaApp/base.html' %}
+{% block title %}Excluir Sorvete{% endblock %}
+{% block content %}
+<h1>Excluir Sorvete</h1>
+<p>Tem certeza que deseja excluir o sorvete {{ sorvete.nome }}?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    <a href="{% url 'cardapio' %}" class="botao">Cancelar</a>
+</form>
+{% endblock %}

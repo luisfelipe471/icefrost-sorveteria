@@ -1,0 +1,83 @@
+{% extends 'lojaApp/base.html' %}
+{% load static %}
+{% block title %}Cardápio{% endblock %}
+{% block content %}
+<section class="catalog-container">
+<section class="page-header">
+    <div>
+        <h2>Vitrine de sabores</h2>
+        <p>Escolha entre nossas receitas cremosas e sempre frescas. Cada card traz preço, descrição e as tags especiais do sabor.</p>
+    </div>
+</section>
+
+<form method="get" action="{% url 'cardapio' %}" class="menu-filters" role="search">
+    <div class="menu-filter-field menu-search-field">
+        <label for="menu-search">Buscar sabor</label>
+        <input id="menu-search" type="search" name="q" value="{{ busca }}" placeholder="Ex.: chocolate, morango">
+    </div>
+    <div class="menu-filter-field">
+        <label for="menu-category">Categoria</label>
+        <select id="menu-category" name="categoria">
+            <option value="">Todas as categorias</option>
+            {% for categoria in categorias %}
+            <option value="{{ categoria.id }}" {% if categoria.id|stringformat:'s' == categoria_selecionada %}selected{% endif %}>{{ categoria.nome }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="menu-filter-field">
+        <label for="menu-dietary-option">Opção alimentar</label>
+        <select id="menu-dietary-option" name="opcao_dietetica">
+            <option value="">Todas as opções</option>
+            {% for opcao in opcoes_dieteticas %}
+            <option value="{{ opcao.id }}" {% if opcao.id|stringformat:'s' == opcao_selecionada %}selected{% endif %}>{{ opcao.nome }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="menu-filter-actions">
+        <button type="submit" class="button">Filtrar</button>
+        {% if filtros_aplicados %}
+        <a class="menu-filter-clear" href="{% url 'cardapio' %}">Limpar</a>
+        {% endif %}
+    </div>
+</form>
+
+<div class="grid cards-grid" aria-live="polite">
+    {% for sorvete in sorvetes %}
+    <article class="card" data-category="{{ sorvete.categoria.nome|lower }}">
+        {% if sorvete.card_image_url %}
+        <img class="card-image" src="{{ sorvete.card_image_url }}" alt="Sorvete de {{ sorvete.sabor }}" loading="lazy">
+        {% endif %}
+        <div class="card-top">
+            <h3>{{ sorvete.sabor }}</h3>
+            <span class="pill category-pill">{{ sorvete.categoria.nome }}</span>
+        </div>
+        <p class="card-description">{{ sorvete.descricao }}</p>
+        <div class="card-meta">
+            <span class="price-badge">R$ {{ sorvete.preco }}</span>
+        </div>
+        <div class="tags-row">
+            {% for tag in sorvete.opcoes_dieteticas.all %}
+                <span class="pill">{{ tag.nome }}</span>
+            {% empty %}
+                <span class="pill">Tradicional</span>
+            {% endfor %}
+        </div>
+        {% if user.is_staff %}
+        <div class="card-actions">
+            <a href="{% url 'editar_sorvete' sorvete.id %}" class="btn-edit">✏️ Editar</a>
+            <a href="{% url 'excluir_sorvete' sorvete.id %}" class="btn-delete">🗑️ Excluir</a>
+        </div>
+        {% endif %}
+    </article>
+    {% empty %}
+    <div class="empty-state">
+        {% if filtros_aplicados %}
+        Nenhum sabor corresponde aos filtros. <a href="{% url 'cardapio' %}">Limpar filtros</a>
+        {% else %}
+        Nenhum sorvete cadastrado ainda. A equipe pode adicionar novos sabores pelo painel de cadastro.
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+ </section>
+{% endblock %}

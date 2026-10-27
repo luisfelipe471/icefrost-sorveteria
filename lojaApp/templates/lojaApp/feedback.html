@@ -1,0 +1,32 @@
+{% extends 'lojaApp/base.html' %}
+{% block title %}Feedback{% endblock %}
+{% block content %}
+<section class="form-panel feedback-panel">
+    <div>
+        <h2>Conte para nós</h2>
+        <p>Suas sugestões fazem nossos sorvetes ficarem ainda melhores. Deixe uma mensagem carinhosa para a equipe.</p>
+    </div>
+    {% if mensagem %}
+        <div class="alert">{{ mensagem }}</div>
+    {% endif %}
+    {% for message in messages %}
+        <div class="alert" role="status">{{ message }}</div>
+    {% endfor %}
+    <form method="post" class="feedback-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="button">Enviar sugestão</button>
+    </form>
+</section>
+{% if feedbacks %}
+<section class="feedback-list" aria-label="Comentários enviados">
+    <h2>Todos os Feedbacks</h2>
+    {% for feedback in feedbacks %}
+    <article class="feedback-submission" aria-live="polite">
+        <p class="feedback-author">{{ feedback.nome }}</p>
+        <p class="feedback-text">{{ feedback.mensagem|linebreaksbr }}</p>
+    </article>
+    {% endfor %}
+</section>
+{% endif %}
+{% endblock %}

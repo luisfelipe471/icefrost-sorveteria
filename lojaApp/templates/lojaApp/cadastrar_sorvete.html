@@ -1,0 +1,10 @@
+{% extends 'lojaApp/base.html' %}
+{% load static %}
+{% block title %}Cadastrar Sorvete{% endblock %}
+{% block content %}
+    <h1>Cadastrar Novo Sorvete</h1>
+    <form method="post">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit">Salvar Sorvete</button>
+    </form>
+{% endblock %}

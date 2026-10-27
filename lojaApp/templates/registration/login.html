@@ -1,0 +1,12 @@
+{% extends 'lojaApp/base.html' %}
+
+{% block content %}
+<section class="form-panel login-panel">
+    <h2>🔐 Acesso Restrito</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Entrar no Sistema</button>
+    </form>
+</section>
+{% endblock %}

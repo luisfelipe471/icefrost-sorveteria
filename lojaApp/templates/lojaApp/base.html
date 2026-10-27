@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}IceFrost{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="brand">
+            <span class="brand-mark">🍦</span>
+            <div>
+                <h1>IceFrost</h1>
+                <p>Doces memórias em cada colherada.</p>
+            </div>
+        </div>
+        <nav class="site-nav">
+            <a href="{% url 'index' %}">Início</a>
+            <a href="{% url 'cardapio' %}">Cardápio</a>
+            <a href="{% url 'galeria' %}">Galeria</a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'feedback' %}">Feedback</a>
+            {% endif %}
+            {% if user.is_staff %}
+            <a href="{% url 'cadastrar_sorvete' %}">Cadastrar Sorvete</a>
+            {% endif %}
+        </nav>
+        <div class="user-bar">
+            {% if user.is_authenticated %}
+            <span>👤 Olá, <strong>{{ user.username }}</strong></span>
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Sair</button>
+            </form>
+            {% else %}
+            <span>Visitante</span>
+            <a href="{% url 'login' %}">Entrar</a>
+            <a href="{% url 'cadastrar_usuario' %}" class="button button-small">Cadastrar</a>
+            {% endif %}
+        </div>
+    </header>
+
+    <main class="page-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 IceFrost Sorveteria</p>
+    </footer>
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+
+</html>

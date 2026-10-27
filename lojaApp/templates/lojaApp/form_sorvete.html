@@ -1,0 +1,32 @@
+{% extends 'lojaApp/base.html' %}
+{% load static %}
+{% block title %}{% if sorvete %}Editar sabor{% else %}Cadastrar sorvete{% endif %}{% endblock %}
+{% block content %}
+<section class="form-panel sorvete-panel">
+    <div class="form-panel__header">
+        <h2>{% if sorvete %}Editar sabor{% else %}Cadastrar novo sabor{% endif %}</h2>
+        <p>Use este formulário para adicionar um novo sabor ou atualizar o preço e a descrição de um sorvete existente.</p>
+    </div>
+
+    <form method="post" enctype="multipart/form-data" class="sorvete-form">
+        {% csrf_token %}
+
+        {% for field in form %}
+            <div class="sorvete-form__field {% if field.errors %}has-error{% endif %}">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+
+                {% if field.help_text %}
+                    <small>{{ field.help_text }}</small>
+                {% endif %}
+
+                {% for error in field.errors %}
+                    <span class="field-error">{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="button">{% if sorvete %}Atualizar sabor{% else %}Salvar sorvete{% endif %}</button>
+    </form>
+</section>
+{% endblock %}

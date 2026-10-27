@@ -1,0 +1,12 @@
+{% extends 'lojaApp/base.html' %}
+
+{% block content %}
+<section class="form-panel registration-panel">
+    <h2>Registrar Novo Usuário</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Cadastrar</button>
+    </form>
+</section>
+{% endblock %}

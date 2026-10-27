@@ -1,0 +1,61 @@
+{% extends 'lojaApp/base.html' %}
+{% load static %}
+{% block title %}Galeria{% endblock %}
+{% block content %}
+<div class="gallery-container">
+<section class="page-header">
+    <div>
+        <h2>Galeria da sorveteria</h2>
+        <p>Mostramos aqui os bastidores, os sabores e os momentos que fazem da IceFrost um lugar especial para quem ama sorvete.</p>
+    </div>
+</section>
+
+<div class="grid gallery-grid">
+    <article class="gallery-card">
+        <img src="{% static 'img/01.jpg' %}" alt="Balcão com sorvetes coloridos" class="gallery-image" tabindex="0" role="button" aria-haspopup="dialog">
+        <p>Nosso balcão sempre cheio de cores e sabores para escolher.</p>
+    </article>
+    <article class="gallery-card">
+        <img src="{% static 'img/02.jpg' %}" alt="Sorvete servido com frutas frescas" class="gallery-image" tabindex="0" role="button" aria-haspopup="dialog">
+        <p>Receitas frescas com ingredientes selecionados, servidas com carinho.</p>
+    </article>
+    <article class="gallery-card">
+        <img src="{% static 'img/03.jpg' %}" alt="Equipe preparando sorvete artesanal" class="gallery-image" tabindex="0" role="button" aria-haspopup="dialog">
+        <p>Feito à mão para manter o sabor caseiro em cada casquinha.</p>
+    </article>
+    <article class="gallery-card">
+        <img src="{% static 'img/04.jpg' %}" alt="Ambiente acolhedor da sorveteria" class="gallery-image" tabindex="0" role="button" aria-haspopup="dialog">
+        <p>Um espaço acolhedor para compartilhar doces momentos com amigos e família.</p>
+    </article>
+    <article class="gallery-card">
+        <img src="{% static 'img/05.jpg' %}" alt="Imagem 5 da galeria IceFrost" class="gallery-image" tabindex="0" role="button" aria-haspopup="dialog">
+        <p>Mais um registro dos detalhes da IceFrost.</p>
+    </article>
+    <article class="gallery-card">
+        <img src="{% static 'img/06.jpg' %}" alt="Imagem 6 da galeria IceFrost" class="gallery-image" tabindex="0" role="button" aria-haspopup="dialog">
+        <p>Um momento doce para aproveitar sem pressa.</p>
+    </article>
+    <article class="gallery-card">
+        <img src="{% static 'img/07.jpg' %}" alt="Imagem 7 da galeria IceFrost" class="gallery-image" tabindex="0" role="button" aria-haspopup="dialog">
+        <p>Sabores e boas lembranças fazem parte da experiência.</p>
+    </article>
+    <article class="gallery-card">
+        <img src="{% static 'img/08.jpg' %}" alt="Imagem 8 da galeria IceFrost" class="gallery-image" tabindex="0" role="button" aria-haspopup="dialog">
+        <p>Uma pausa gelada combina com qualquer ocasião.</p>
+    </article>
+    <article class="gallery-card">
+        <img src="{% static 'img/09.jpg' %}" alt="Imagem 9 da galeria IceFrost" class="gallery-image" tabindex="0" role="button" aria-haspopup="dialog">
+        <p>Encontre seu próximo sabor favorito por aqui.</p>
+    </article>
+    
+</div>
+</div>
+
+<div id="imageModal" class="image-modal" role="dialog" aria-modal="true" aria-label="Imagem ampliada" aria-hidden="true">
+    <button class="modal-close" id="closeModal" type="button" aria-label="Fechar imagem">&times;</button>
+    <div class="modal-content">
+        <img id="modalImage" src="" alt="">
+    </div>
+</div>
+
+{% endblock %}

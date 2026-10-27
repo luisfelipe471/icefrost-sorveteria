@@ -1,0 +1,11 @@
+{% extends 'lojaApp/base.html' %}
+{% block content %}
+<main class="container" style="max-width:650px;margin:3rem auto;padding:1rem">
+  <h1>Comentário sobre {{ sorvete.sabor }}</h1>
+  <form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enviar comentário</button>
+  </form>
+  <p><a href="{% url 'cardapio' %}">Voltar ao cardápio</a></p>
+</main>
+{% endblock %}
