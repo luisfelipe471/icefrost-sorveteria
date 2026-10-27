@@ -15,6 +15,34 @@ Aplicação web de uma sorveteria fictícia, feita com Django. O projeto reúne 
 As fotos enviadas pela equipe ficam em `media/sorvetes/` no ambiente local. Em produção, configure armazenamento persistente para arquivos de mídia.
 As fontes das fotos do cardápio estão em [IMAGE_SOURCES.md](IMAGE_SOURCES.md); consulte também a [licença do Pexels](https://www.pexels.com/license/).
 
+## Demonstração do sistema
+
+As capturas de tela abaixo mostram as páginas disponíveis aos visitantes e uma das funções de gerenciamento da equipe administrativa.
+
+### Página inicial
+
+![Página inicial da sorveteria IceFrost](imagens/admin1.png)
+
+### Cardápio de sorvetes
+
+Consulta dos sabores com fotos, preços e filtros de pesquisa.
+
+![Cardápio com busca e filtros](imagens/usuario3.png)
+
+### Administração — cadastro de sabores
+
+Formulário utilizado pela equipe para cadastrar produtos no cardápio.
+
+![Cadastro de sabores na área administrativa](imagens/admin.png)
+
+### Galeria
+
+![Galeria de imagens da sorveteria](imagens/usuario5.png)
+
+### Feedback
+
+![Página de feedback do sistema IceFrost](imagens/usuario7.png)
+
 ## Requisitos
 
 - Python 3.12 ou superior.
